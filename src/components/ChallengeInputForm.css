@@ -53,7 +53,12 @@ button {
   flex-wrap: wrap;
   width: 95%;
   background-color: silver;
+  /* justify-content: space-between; */
 }
+.form-elements label {
+  margin-right: 1rem;
+}
+
 .form-section.radio label {
   display: inline-block;
   margin-right: 1rem;

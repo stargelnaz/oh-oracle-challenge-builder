@@ -112,19 +112,19 @@ const ChallengeInputForm = () => {
       </div>
       <h2>Elements</h2>
       <div className='form-elements'>
-        <div className='form-section'>
+        <div>
           <label>
             Clan:
             <ClanSelectOptions />
           </label>
         </div>
-        <div className='form-section'>
+        <div>
           <label>
             Resource:
             <ResourceSelectOptions />
           </label>
         </div>
-        <div className='form-section radio'>
+        <div>
           <label>Quantity:</label>
           {[1, 2, 3, 4, 5, 6].map((num) => (
             <label key={num}>
