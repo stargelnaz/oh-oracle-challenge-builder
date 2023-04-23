@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import './ChallengeInputForm.css';
+import ClanSelectOptions from './ClanSelectOptions';
+import ResourceSelectOptions from './ResourceSelectOptions';
 
 const ChallengeInputForm = () => {
   // State for form fields
@@ -7,12 +9,15 @@ const ChallengeInputForm = () => {
   const [week, setWeek] = useState('');
   const [prize, setPrize] = useState('');
   const [hints, setHints] = useState([{ id: 1, value: '' }]);
-
+  const [quantity, setQuantity] = useState('1');
   // Add hint handler
   const addHint = () => {
     setHints([...hints, { id: hints.length + 1, value: '' }]);
   };
-
+  // Clean empty hints handler
+  const cleanEmptyHints = () => {
+    setHints(hints.filter((hint) => hint.value.trim() !== ''));
+  };
   // Update hint value handler
   const updateHint = (id, value) => {
     setHints(hints.map((hint) => (hint.id === id ? { ...hint, value } : hint)));
@@ -92,12 +97,49 @@ const ChallengeInputForm = () => {
             </label>
           </div>
         ))}
-        <button type='button' onClick={addHint}>
-          Add another Hint
-        </button>
+        <div>
+          <button type='button' onClick={addHint}>
+            Add another Hint
+          </button>
+          <button
+            type='button'
+            onClick={cleanEmptyHints}
+            style={{ marginLeft: '0.5rem' }}
+          >
+            Clear Empty Hints
+          </button>{' '}
+        </div>
       </div>
       <h2>Elements</h2>
-      {/* Elements section will be developed later */}
+      <div className='form-elements'>
+        <div className='form-section'>
+          <label>
+            Clan:
+            <ClanSelectOptions />
+          </label>
+        </div>
+        <div className='form-section'>
+          <label>
+            Resource:
+            <ResourceSelectOptions />
+          </label>
+        </div>
+        <div className='form-section radio'>
+          <label>Quantity:</label>
+          {[1, 2, 3, 4, 5, 6].map((num) => (
+            <label key={num}>
+              <input
+                type='radio'
+                name='quantity'
+                value={num}
+                checked={num.toString() === quantity}
+                onChange={(e) => setQuantity(e.target.value)}
+              />
+              {num}
+            </label>
+          ))}
+        </div>
+      </div>{' '}
       <button type='button' onClick={generateCode}>
         Generate Code
       </button>

@@ -48,3 +48,13 @@ h2 {
 button {
   margin: 1rem 0;
 }
+.form-elements {
+  display: flex;
+  flex-wrap: wrap;
+  width: 95%;
+  background-color: silver;
+}
+.form-section.radio label {
+  display: inline-block;
+  margin-right: 1rem;
+}
