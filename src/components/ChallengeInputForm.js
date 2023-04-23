@@ -9,18 +9,47 @@ const ChallengeInputForm = () => {
   const [week, setWeek] = useState('');
   const [prize, setPrize] = useState('');
   const [hints, setHints] = useState([{ id: 1, value: '' }]);
-  const [quantity, setQuantity] = useState('1');
+  const [elements, setElements] = useState([
+    { id: 1, clan: '', resource: '', quantity: 1 }
+  ]);
+
   // Add hint handler
   const addHint = () => {
     setHints([...hints, { id: hints.length + 1, value: '' }]);
   };
+
   // Clean empty hints handler
   const cleanEmptyHints = () => {
     setHints(hints.filter((hint) => hint.value.trim() !== ''));
   };
+
   // Update hint value handler
   const updateHint = (id, value) => {
     setHints(hints.map((hint) => (hint.id === id ? { ...hint, value } : hint)));
+  };
+
+  // Add element handler
+  const addElement = () => {
+    setElements([
+      ...elements,
+      { id: elements.length + 1, clan: '', resource: '', quantity: 1 }
+    ]);
+  };
+
+  // Delete last element handler
+  const deleteLastElement = () => {
+    if (elements.length > 1) {
+      setElements(elements.slice(0, elements.length - 1));
+    }
+  };
+
+  // Update element handler
+  const updateElement = (id, field, value) => {
+    setElements(
+      elements.map((element) =>
+        element.id === id ? { ...element, [field]: value } : element
+      )
+    );
   };
 
   // Generate code handler
@@ -30,8 +59,14 @@ const ChallengeInputForm = () => {
     const hintsCode = hints
       .map((hint, index) => (hint.value ? `&H${index + 1}=${hint.value}` : ''))
       .join('');
+    const elementsCode = elements
+      .map(
+        (element) =>
+          `&E${element.id}=${element.clan}-${element.resource}-${element.quantity}`
+      )
+      .join('');
 
-    const code = `${season}${weekCode}${prizeCode}${hintsCode}`;
+    const code = `${season}${weekCode}${prizeCode}${hintsCode}${elementsCode}`;
     console.log('Generated code:', code);
   };
 
@@ -112,34 +147,60 @@ const ChallengeInputForm = () => {
       </div>
       <h2>Elements</h2>
       <div className='form-elements'>
-        <div>
-          <label>
-            Clan:
-            <ClanSelectOptions />
-          </label>
-        </div>
-        <div>
-          <label>
-            Resource:
-            <ResourceSelectOptions />
-          </label>
-        </div>
-        <div>
-          <label>Quantity:</label>
-          {[1, 2, 3, 4, 5, 6].map((num) => (
-            <label key={num}>
-              <input
-                type='radio'
-                name='quantity'
-                value={num}
-                checked={num.toString() === quantity}
-                onChange={(e) => setQuantity(e.target.value)}
-              />
-              {num}
+        {elements.map((element) => (
+          <div
+            key={element.id}
+            style={{ backgroundColor: `rgb(255, ${element.id * 30}, 0)` }}
+          >
+            <h3>Element #{element.id}</h3>
+            {/* Element #{element.id} */}
+            {/* <br /> */}
+            <label>
+              Clan:
+              <ClanSelectOptions />
             </label>
-          ))}
-        </div>
-      </div>{' '}
+            <label>
+              Resource:
+              <ResourceSelectOptions />
+            </label>
+            <div>
+              <label>Quantity:</label>
+              {[1, 2, 3, 4, 5, 6].map((num) => (
+                <label key={num}>
+                  <input
+                    type='radio'
+                    name={`quantity${element.id}`}
+                    value={num}
+                    checked={num.toString() === element.quantity}
+                    onChange={(e) =>
+                      setElements(
+                        elements.map((el) =>
+                          el.id === element.id
+                            ? { ...el, quantity: e.target.value }
+                            : el
+                        )
+                      )
+                    }
+                  />
+                  {num}
+                </label>
+              ))}
+              {element.id > 1 && (
+                <button
+                  type='button'
+                  onClick={() => setElements(elements.slice(0, -1))}
+                  style={{ marginLeft: '0.5rem' }}
+                >
+                  Delete Element
+                </button>
+              )}
+            </div>
+          </div>
+        ))}
+        <button type='button' onClick={addElement}>
+          Add another Element
+        </button>
+      </div>
       <button type='button' onClick={generateCode}>
         Generate Code
       </button>
