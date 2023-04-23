@@ -1,7 +1,14 @@
+// ClanSelectOptions.js
+
 import clansData from '../data/clans.json';
-const ClanSelectOptions = () => {
+
+const ClanSelectOptions = ({ id, value, onChange }) => {
+  const handleSelectChange = (e) => {
+    onChange(id, e.target.value);
+  };
+
   return (
-    <select>
+    <select value={value} onChange={handleSelectChange}>
       {clansData.clans.map((clan) => (
         <option
           key={clan.id}

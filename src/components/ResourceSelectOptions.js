@@ -1,7 +1,14 @@
+// ResourceSelectOptions.js
+
 import resourcesData from '../data/resources.json';
-const ResourceSelectOptions = () => {
+
+const ResourceSelectOptions = ({ id, value, onChange }) => {
+  const handleSelectChange = (e) => {
+    onChange(id, e.target.value);
+  };
+
   return (
-    <select>
+    <select value={value} onChange={handleSelectChange}>
       {resourcesData.resources.map((resource) => (
         <option
           key={resource.id}

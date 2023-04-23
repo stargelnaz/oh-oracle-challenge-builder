@@ -1,3 +1,5 @@
+//ChallengeInputForm.js
+
 import React, { useState } from 'react';
 import './ChallengeInputForm.css';
 import ClanSelectOptions from './ClanSelectOptions';
@@ -153,15 +155,22 @@ const ChallengeInputForm = () => {
             style={{ backgroundColor: `rgb(255, ${element.id * 30}, 0)` }}
           >
             <h3>Element #{element.id}</h3>
-            {/* Element #{element.id} */}
-            {/* <br /> */}
+
             <label>
               Clan:
-              <ClanSelectOptions />
+              <ClanSelectOptions
+                id={element.id}
+                value={element.clan}
+                onChange={(id, value) => updateElement(id, 'clan', value)}
+              />
             </label>
             <label>
               Resource:
-              <ResourceSelectOptions />
+              <ResourceSelectOptions
+                id={element.id}
+                value={element.resource}
+                onChange={(id, value) => updateElement(id, 'resource', value)}
+              />
             </label>
             <div>
               <label>Quantity:</label>
