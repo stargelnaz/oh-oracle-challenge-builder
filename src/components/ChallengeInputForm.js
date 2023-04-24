@@ -57,18 +57,36 @@ const ChallengeInputForm = () => {
   // Generate code handler
   const generateCode = () => {
     const weekCode = week ? `W${week.toString().padStart(2, '0')}` : '';
-    const prizeCode = prize ? `&P=${prize}` : '';
+    const prizeCode = prize ? `${prize}` : '';
     const hintsCode = hints
-      .map((hint, index) => (hint.value ? `&H${index + 1}=${hint.value}` : ''))
-      .join('');
+      .map((hint, index) =>
+        hint.value ? `"Hint #${index + 1}: ${hint.value}"` : ''
+      )
+      .join(',');
     const elementsCode = elements
       .map(
         (element) =>
-          `&E${element.id}=${element.clan}-${element.resource}-${element.quantity}`
+          `{"id": "E${element.id}", "quantity": ${element.quantity}, "clan": "${element.clan}", "resource": "${element.resource}"}`
       )
-      .join('');
+      .join(',');
 
-    const code = `${season}${weekCode}${prizeCode}${hintsCode}${elementsCode}`;
+    // Create code for display
+    const code = JSON.stringify(
+      {
+        season: `${season}${weekCode}`,
+        prize: prizeCode,
+        hints: hints.map((hint) => `Hint #${hint.id}: ${hint.value}`),
+        elements: elements.map((element) => ({
+          id: `E${element.id}`,
+          quantity: element.quantity,
+          clan: element.clan,
+          resource: element.resource
+        }))
+      },
+      null,
+      2
+    );
+
     console.log('Generated code:', code);
   };
 

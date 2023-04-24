@@ -9,6 +9,7 @@ const ResourceSelectOptions = ({ id, value, onChange }) => {
 
   return (
     <select value={value} onChange={handleSelectChange}>
+      <option value=''>Choose One</option>
       {resourcesData.resources.map((resource) => (
         <option
           key={resource.id}

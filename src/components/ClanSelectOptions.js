@@ -9,6 +9,7 @@ const ClanSelectOptions = ({ id, value, onChange }) => {
 
   return (
     <select value={value} onChange={handleSelectChange}>
+      <option value=''>Choose One</option>
       {clansData.clans.map((clan) => (
         <option
           key={clan.id}

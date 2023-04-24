@@ -3,7 +3,7 @@
     {
       "name": "Tolum",
       "color": "blue",
-      "id": "T",
+      "id": "Tol",
       "rgba": "rgba(115,163,212,255)",
       "rival": "Rachanté",
       "terrain": "sea",
@@ -13,7 +13,7 @@
     {
       "name": "Rachanté",
       "color": "yellow",
-      "id": "R",
+      "id": "Ra",
       "rgba": "rgba(233,214,60,255)",
       "rival": "Tolum",
       "terrain": "desert",
@@ -23,7 +23,7 @@
     {
       "name": "Phylaxi",
       "color": "green",
-      "id": "P",
+      "id": "Phy",
       "rgba": "rgba(55,104,28,255)",
       "rival": "Ha-Radia",
       "terrain": "bog",
@@ -33,7 +33,7 @@
     {
       "name": "Ha-Radia",
       "color": "red",
-      "id": "H",
+      "id": "Ha",
       "rgba": "rgba(228,48,60,255)",
       "rival": "Pylaxi",
       "terrain": "mountain",
@@ -43,7 +43,7 @@
     {
       "name": "Ipaci",
       "color": "purple",
-      "id": "I",
+      "id": "Ipaci",
       "rgba": "rgba(149,21,158,255)",
       "rival": "Calyzon",
       "terrain": "hot spring",
@@ -53,7 +53,7 @@
     {
       "name": "Calyzon",
       "color": "maroon",
-      "id": "C",
+      "id": "Cal",
       "rgba": "rgba(82,0,17,255)",
       "rival": "Ipaci",
       "terrain": "canyon",
@@ -63,7 +63,7 @@
     {
       "name": "Vandra",
       "color": "pink",
-      "id": "V",
+      "id": "Van",
       "rgba": "rgba(246,100,201,255)",
       "rival": "Nari",
       "terrain": "rainforest",
@@ -73,58 +73,12 @@
     {
       "name": "Nari",
       "color": "gray",
-      "id": "N",
+      "id": "Nari",
       "rgba": "rgba(100,99,97,255)",
       "rival": "Vandran",
       "terrain": "deadland",
       "hemisphere": "drylands",
       "text_dark": "white"
-    }
-  ],
-
-  "resources": [
-    {
-      "id": "fd",
-      "class": "consumables",
-      "type": "food",
-      "description": "food NFT"
-    },
-    {
-      "id": "fl",
-      "class": "consumables",
-      "type": "fuel",
-      "description": "fuel NFT"
-    },
-    {
-      "id": "pl",
-      "class": "consumables",
-      "type": "petal",
-      "description": "petal NFT"
-    },
-
-    {
-      "id": "c",
-      "class": "orchids",
-      "type": "common",
-      "description": "common orchid"
-    },
-    {
-      "id": "u",
-      "class": "orchids",
-      "type": "uncommon",
-      "description": "uncommon orchid"
-    },
-    {
-      "id": "r",
-      "class": "orchids",
-      "type": "rare",
-      "description": "rare orchid"
-    },
-    {
-      "id": "e",
-      "class": "orchids",
-      "type": "epic",
-      "description": "epic orchid"
     }
   ]
 }

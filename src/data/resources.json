@@ -1,37 +1,37 @@
 {
   "resources": [
     {
-      "id": "fd",
+      "id": "Food",
       "class": "consumables",
       "type": "food",
       "name": "Food NFT"
     },
     {
-      "id": "fl",
+      "id": "Fuel",
       "class": "consumables",
       "type": "fuel",
       "name": "Fuel NFT"
     },
     {
-      "id": "pl",
+      "id": "Petal",
       "class": "consumables",
       "type": "petal",
       "name": "Petal NFT"
     },
 
     {
-      "id": "c",
+      "id": "Com",
       "class": "orchids",
       "type": "common",
       "name": "Common Orchid"
     },
     {
-      "id": "u",
+      "id": "Unc",
       "class": "orchids",
       "type": "uncommon",
       "name": "Uncommon Orchid"
     },
-    { "id": "r", "class": "orchids", "type": "rare", "name": "Rare Orchid" },
-    { "id": "e", "class": "orchids", "type": "epic", "name": "Epic Orchid" }
+    { "id": "Rare", "class": "orchids", "type": "rare", "name": "Rare Orchid" },
+    { "id": "Epic", "class": "orchids", "type": "epic", "name": "Epic Orchid" }
   ]
 }
