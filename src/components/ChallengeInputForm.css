@@ -2,7 +2,6 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 80%;
   max-width: 900px;
   margin: 0 auto;
   padding: 1rem;
@@ -12,9 +11,10 @@
 
 h2 {
   width: 100%;
-  padding: 0.5rem;
+  padding: 0.1rem;
   background-color: #777;
   color: #fff;
+  margin-top: 1rem;
 }
 
 .form-section {
@@ -22,7 +22,8 @@ h2 {
   flex-direction: column;
   align-items: flex-start;
   width: 100%;
-  padding: 1rem 0;
+  /* padding: 0.5rem 0; */
+  margin-bottom: 0.1rem;
 }
 
 .form-section.season {
@@ -33,12 +34,12 @@ h2 {
 }
 
 .form-section label {
-  margin-right: 1rem;
+  margin-right: 0.1rem;
 }
 
 .form-section label {
   display: block;
-  margin-bottom: 0.5rem;
+  margin-bottom: 0.1rem;
 }
 
 .form-section input[type='radio'] {
@@ -46,15 +47,20 @@ h2 {
 }
 
 button {
-  margin: 1rem 0;
+  margin: 0.5rem 0;
 }
+button.active {
+  background-color: green;
+  color: white;
+}
+
 .form-elements {
   display: flex;
   flex-wrap: wrap;
   width: 95%;
   background-color: silver;
-  /* justify-content: space-between; */
 }
+
 .form-elements label {
   margin-right: 1rem;
 }
@@ -62,4 +68,88 @@ button {
 .form-section.radio label {
   display: inline-block;
   margin-right: 1rem;
+}
+
+/* Adjustments to make the form more compact */
+.form-container {
+  width: 100%;
+}
+
+.form-section.season label {
+  margin-right: 1rem;
+}
+
+.form-section.season > div {
+  display: flex;
+  align-items: center;
+}
+
+.form-section.season > div > label {
+  margin-right: 0.5rem;
+}
+
+.form-section.season input[type='number'],
+.form-section.season input[type='text'] {
+  width: 8rem;
+}
+
+.form-section.season button {
+  margin-left: 1rem;
+}
+
+.form-section > label > button {
+  margin-left: 0.5rem;
+}
+
+.form-elements > div {
+  width: 100%;
+  margin-bottom: 1rem;
+}
+
+.form-elements > div > h3 {
+  margin-top: 0;
+  margin-bottom: 0.5rem;
+}
+
+.form-elements > div > label {
+  display: flex;
+  align-items: center;
+  margin-bottom: 0.5rem;
+}
+
+.form-elements > div > label > select {
+  margin-right: 0.5rem;
+}
+
+.form-elements > div > div {
+  display: flex;
+  align-items: center;
+  margin-top: 0.5rem;
+}
+
+.form-elements > div > div > label {
+  margin-right: 0.5rem;
+}
+
+.form-elements > div > div > label:first-of-type {
+  margin-right: 1rem;
+}
+
+.form-elements > div > div > label > input[type='radio'] {
+  margin-right: 0.25rem;
+}
+
+.form-elements > div > div > button {
+  margin-left: auto;
+}
+
+@media screen and (min-width: 768px) {
+  .form-container {
+    width: 80%;
+  }
+
+  .form-section.season input[type='number'],
+  .form-section.season input[type='text'] {
+    width: 10rem;
+  }
 }

@@ -124,7 +124,7 @@ const ChallengeInputForm = () => {
         </label>
         <div className='form-section season'>
           <label>
-            Week:
+            Week:&nbsp;
             <input
               type='number'
               name='week'
@@ -135,7 +135,7 @@ const ChallengeInputForm = () => {
             />
           </label>
           <label>
-            Prize:
+            Prize:&nbsp;
             <input
               type='text'
               name='prize'
@@ -148,9 +148,19 @@ const ChallengeInputForm = () => {
       <h2>Anvil</h2>
       <div className='form-section'>
         <label>
-          Active Anvil?
-          <button onClick={() => setAnvil(true)}>Yes</button>
-          <button onClick={() => setAnvil(false)}>No</button>
+          Active anvil?
+          <button
+            className={anvil ? 'active' : ''}
+            onClick={() => setAnvil(true)}
+          >
+            Yes
+          </button>
+          <button
+            className={!anvil ? 'active' : ''}
+            onClick={() => setAnvil(false)}
+          >
+            No
+          </button>
         </label>
       </div>
       <h2>Hints</h2>
@@ -158,7 +168,7 @@ const ChallengeInputForm = () => {
         {hints.map((hint) => (
           <div key={hint.id}>
             <label>
-              Hint #{hint.id}:
+              Hint #{hint.id}:&nbsp;
               <input
                 type='text'
                 name={`hint${hint.id}`}
@@ -191,7 +201,7 @@ const ChallengeInputForm = () => {
             <h3>Element #{element.id}</h3>
 
             <label>
-              Clan:
+              Clan:&nbsp;
               <ClanSelectOptions
                 id={element.id}
                 value={element.clan}
@@ -199,7 +209,7 @@ const ChallengeInputForm = () => {
               />
             </label>
             <label>
-              Resource:
+              Resource:&nbsp;
               <ResourceSelectOptions
                 id={element.id}
                 value={element.resource}
@@ -207,7 +217,7 @@ const ChallengeInputForm = () => {
               />
             </label>
             <div>
-              <label>Quantity:</label>
+              <label>Quantity:&nbsp;</label>
               {[1, 2, 3, 4, 5, 6].map((num) => (
                 <label key={num}>
                   <input
