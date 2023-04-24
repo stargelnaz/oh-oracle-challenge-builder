@@ -10,10 +10,16 @@ const ChallengeInputForm = () => {
   const [season, setSeason] = useState('S01');
   const [week, setWeek] = useState('');
   const [prize, setPrize] = useState('');
+  const [anvil, setAnvil] = useState(false);
   const [hints, setHints] = useState([{ id: 1, value: '' }]);
   const [elements, setElements] = useState([
     { id: 1, clan: '', resource: '', quantity: 1 }
   ]);
+  const [generatedCode, setGeneratedCode] = useState('');
+  const copyToClipboard = () => {
+    navigator.clipboard.writeText(generatedCode);
+    alert('Code copied to clipboard!');
+  };
 
   // Add hint handler
   const addHint = () => {
@@ -75,6 +81,7 @@ const ChallengeInputForm = () => {
       {
         season: `${season}${weekCode}`,
         prize: prizeCode,
+        anvil: anvil,
         hints: hints.map((hint) => `Hint #${hint.id}: ${hint.value}`),
         elements: elements.map((element) => ({
           id: `E${element.id}`,
@@ -87,7 +94,8 @@ const ChallengeInputForm = () => {
       2
     );
 
-    console.log('Generated code:', code);
+    // console.log('Generated code:', code);
+    setGeneratedCode(code);
   };
 
   return (
@@ -136,6 +144,14 @@ const ChallengeInputForm = () => {
             />
           </label>
         </div>
+      </div>
+      <h2>Anvil</h2>
+      <div className='form-section'>
+        <label>
+          Active Anvil?
+          <button onClick={() => setAnvil(true)}>Yes</button>
+          <button onClick={() => setAnvil(false)}>No</button>
+        </label>
       </div>
       <h2>Hints</h2>
       <div className='form-section'>
@@ -231,6 +247,18 @@ const ChallengeInputForm = () => {
       <button type='button' onClick={generateCode}>
         Generate Code
       </button>
+      <div className='form-section'>
+        <h2>Generated Code</h2>
+
+        {generatedCode && (
+          <div className='form-section'>
+            <div className='code-container'>{generatedCode}</div>
+            <button type='button' onClick={copyToClipboard}>
+              Copy to Clipboard
+            </button>
+          </div>
+        )}
+      </div>
     </div>
   );
 };
